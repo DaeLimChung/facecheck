@@ -204,7 +204,13 @@ if __name__ == "__main__":
             print("- Found {} at ({}, {})".format(name, left, top))
             checked.add(name)
 
+    checked_list = list(checked)
+    checked_list.sort()
+    attendance_sheet = open("attendance.csv", "w")
 
-    for element in checked:
+    for element in checked_list:
         if element != "unknown":
+            attendance_sheet.write("%s\n"%element)
             print(element)
+
+    attendance_sheet.close()
